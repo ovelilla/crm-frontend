@@ -1,6 +1,7 @@
 export const options = {
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "inherit",
+    fontSize: 16,
   },
   components: {
     MuiButton: {
@@ -9,6 +10,7 @@ export const options = {
           height: "48px",
           padding: "0 24px",
           borderRadius: "8px",
+          fontWeight: 500,
         },
       },
     },
