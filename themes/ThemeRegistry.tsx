@@ -4,7 +4,7 @@ import * as React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { NextAppDirEmotionCacheProvider } from "tss-react/next/appDir";
-import theme from "./lightTheme";
+import theme from "@/themes/theme";
 
 export default function ThemeRegistry({
   children,
