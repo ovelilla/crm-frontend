@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 interface ThemeState {
-  theme: "light" | "dark";
-  setTheme: (theme: "light" | "dark") => void;
+    themeMode: "light" | "dark";
+    setThemeMode: (themeMode: "light" | "dark") => void;
 }
 
 const useThemeStore = create<ThemeState>((set) => ({
-  theme: "light",
-  setTheme: (theme) => set({ theme }),
+    themeMode: "light",
+    setThemeMode: (themeMode) => set({ themeMode }),
 }));
 
 export default useThemeStore;

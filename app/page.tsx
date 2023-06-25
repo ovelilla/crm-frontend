@@ -1,41 +1,29 @@
 "use client";
 
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Switch from "@mui/material/Switch";
-
+import { useTheme } from "@mui/material/styles";
 import useThemeStore from "@/hooks/useThemeStore";
+import Layout from "@/features/user/layout";
+import Header from "@/features/user/components/header";
+import Body from "@/features/user/components/body";
+import Login from "@/features/user/login";
+import Footer from "@/features/user/components/footer";
 
 export default function Home() {
-  const { theme, setTheme } = useThemeStore();
+    const theme = useTheme();
+    const { themeMode, setThemeMode } = useThemeStore();
 
-  return (
-    <Container maxWidth="lg">
-      <p>Hola mundo</p>
-      <Box
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI - Next.js example using App Router in TypeScript
-        </Typography>
-        <Button variant="contained">Contained</Button>
-        <Button variant="contained" color="secondary">
-          Secondary
-        </Button>
-        <Switch
-          checked={theme === "dark"}
-          onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
-          inputProps={{ "aria-label": "theme switch" }}
-        />
-      </Box>
-    </Container>
-  );
+    return (
+        <Layout>
+            <Header title={"Iniciar sesión"} />
+            <Body>
+                <Login />
+            </Body>
+            <Footer
+                firstLink={"/registrar"}
+                firstText={"¿No tienes cuenta? Regístrate"}
+                secondLink={"/recuperar"}
+                secondText={"¿Olvidaste tu contraseña?"}
+            />
+        </Layout>
+    );
 }
