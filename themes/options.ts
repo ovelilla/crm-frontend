@@ -1,7 +1,6 @@
 export const options = {
     typography: {
         fontFamily: "inherit",
-        fontSize: 16,
     },
     components: {
         MuiButton: {
@@ -13,6 +12,7 @@ export const options = {
                     height: 48,
                     padding: "0 24px",
                     borderRadius: 48,
+                    fontSize: "inherit",
                     fontWeight: 500,
                     textTransform: "none" as const,
                     letterSpacing: 0,
@@ -46,17 +46,11 @@ export const options = {
         MuiIconButton: {
             styleOverrides: {
                 root: {
-                    // padding: "0",
-                    // fontSize: "16px",
-                    // fontFamily: "inherit",
-                    // color: gray[600],
-                    // "&:hover": {
-                    //     color: gray[700],
-                    // },
-                    // svg: {
-                    //     width: "24px",
-                    //     height: "24px",
-                    // },
+                    padding: "0",
+                    svg: {
+                        width: "24px",
+                        height: "24px",
+                    },
                 },
                 sizeSmall: {
                     width: "32px",

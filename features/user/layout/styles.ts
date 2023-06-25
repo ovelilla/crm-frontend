@@ -20,13 +20,11 @@ export const ColumnLeft = styled("div")(({ theme }) => ({
 
     [theme.breakpoints.up("sm")]: {
         justifyContent: "center",
-        backgroundColor: theme.palette.background.default,
     },
 
     [theme.breakpoints.up("lg")]: {
         alignItems: "flex-end",
         padding: "96px",
-        backgroundColor: theme.palette.background.paper,
     },
 }));
 
@@ -41,14 +39,12 @@ export const ContainerLeft = styled("div")(({ theme }) => ({
     [theme.breakpoints.up("sm")]: {
         maxWidth: "560px",
         padding: "48px",
-        // boxShadow: shadows.md,
         borderRadius: "16px",
     },
 
     [theme.breakpoints.up("lg")]: {
         maxWidth: "480px",
         padding: 0,
-        boxShadow: "none",
         borderRadius: 0,
     },
 }));
@@ -60,7 +56,7 @@ export const ColumnRight = styled("div")(({ theme }) => ({
     flex: "1 1 50%",
     position: "relative",
     padding: "32px",
-    // backgroundColor: slate[800],
+    backgroundColor: theme.palette.background.paper,
 
     [theme.breakpoints.up("lg")]: {
         display: "flex",
@@ -75,7 +71,6 @@ export const ColumnRight = styled("div")(({ theme }) => ({
         height: "100%",
 
         g: {
-            // color: slate[500],
             opacity: 0.2,
         },
     },

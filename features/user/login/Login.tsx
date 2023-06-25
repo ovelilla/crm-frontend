@@ -65,7 +65,6 @@ const Login = () => {
             />
 
             <FormControlLabel
-                sx={{ gap: 1 }}
                 control={<Checkbox value="remember" color="primary" />}
                 label="Recordarme"
             />
@@ -76,7 +75,6 @@ const Login = () => {
                 size="large"
                 color="primary"
                 fullWidth
-                sx={{ mt: 1 }}
                 loading={loading}
             >
                 Iniciar sesión
