@@ -9,23 +9,35 @@ import IconButton from "@mui/material/IconButton";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { loginSchema, LoginSchema } from "@/features/user/login/schemas/login.schema";
+import useLoginStore from "@/features/user/login/store/login.store";
+import {
+    loginSchema,
+    LoginSchema,
+} from "@/features/user/login/schemas/login.schema";
 import { Form } from "@/features/user/login/styles";
 
 const Login = () => {
-    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    const { loading, user, auth, errors, login } = useLoginStore((state) => state);
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors: formErrors },
         setError,
     } = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema),
     });
+
     const onSubmit: SubmitHandler<LoginSchema> = async (values) => {
+        console.log(process.env.BACKEND_URL);
         console.log(values);
+        console.log(formErrors);
+        await login(values);
+        console.log(errors);
+        console.log(user);
+        console.log(auth);
     };
 
     return (
@@ -35,8 +47,8 @@ const Login = () => {
                 autoComplete="email"
                 type="email"
                 required
-                error={!!errors.email}
-                helperText={errors.email ? errors.email.message : ""}
+                error={!!formErrors.email}
+                helperText={formErrors.email ? formErrors.email.message : ""}
                 {...register("email")}
             />
 
@@ -45,8 +57,10 @@ const Login = () => {
                 autoComplete="current-password"
                 type={showPassword ? "text" : "password"}
                 required
-                error={!!errors.password}
-                helperText={errors.password ? errors.password.message : ""}
+                error={!!formErrors.password}
+                helperText={
+                    formErrors.password ? formErrors.password.message : ""
+                }
                 {...register("password")}
                 InputProps={{
                     endAdornment: (
@@ -57,7 +71,11 @@ const Login = () => {
                                 onMouseDown={(e) => e.preventDefault()}
                                 edge="end"
                             >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                {showPassword ? (
+                                    <VisibilityOff />
+                                ) : (
+                                    <Visibility />
+                                )}
                             </IconButton>
                         </InputAdornment>
                     ),
